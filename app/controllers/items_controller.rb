@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-      render json: {item: item}
     else
       render :new
     end
