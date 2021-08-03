@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :item_find, only: [:show, :edit, :update]
+  before_action :item_find, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_correct_user, except: [:index, :show]
 
@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
+
   private
 
   def item_find
@@ -48,5 +53,4 @@ class ItemsController < ApplicationController
   def ensure_correct_user
     redirect_to root_path unless @item.user_id == current_user.id
   end
-
 end
