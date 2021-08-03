@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :item_find, only: [:show, :edit, :update, :ensure_correct_user]
+  before_action :item_find, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :ensure_correct_user, except: [:index, :show]
 
