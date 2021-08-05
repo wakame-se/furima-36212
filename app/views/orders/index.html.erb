@@ -27,7 +27,10 @@
       </p>
     </div>
 
-    <%# <%= form_with url: item_orders_path, model: @order_address, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %> %>
+    <%= form_with url: item_orders_path, model: @order_address, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -68,7 +71,6 @@
     </div>
     <%# /カード情報の入力 %>
     
-    <%= form_with url: item_orders_path, model: @order_address, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>
         配送先入力
