@@ -10,6 +10,7 @@ class OrderAddress
     validates :city
     validates :house_number
     validates :telephone_number, format: {with: /\A0[0-9]{9,10}\z/, message: "input only half-width numbers"}
+    validates :token
   end
 
   def save
