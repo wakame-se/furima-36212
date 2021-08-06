@@ -57,6 +57,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Telephone number can't be blank")
       end
 
+      it 'telephone_numberは英数字混合では保存できないこと' do
+        @order_address.telephone_number = '0901234567a'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Telephone number input only half-width numbers')
+      end
+
       it 'telephone_numberは9桁以下の半角数値では保存できないこと' do
         @order_address.telephone_number = '090123456'
         @order_address.valid?
