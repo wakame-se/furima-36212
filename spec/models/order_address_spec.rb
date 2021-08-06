@@ -7,7 +7,7 @@ RSpec.describe OrderAddress, type: :model do
     @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
     sleep 0.1
   end
-  
+
   describe '商品購入機能' do
     context '商品が購入できる時' do
       it 'すべての値が正しく入力されていれば保存できること' do
@@ -60,16 +60,16 @@ RSpec.describe OrderAddress, type: :model do
       it 'telephone_numberは9桁以下の半角数値では保存できないこと' do
         @order_address.telephone_number = '090123456'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number input only half-width numbers")
+        expect(@order_address.errors.full_messages).to include('Telephone number input only half-width numbers')
       end
 
       it 'telephone_numberは12桁以上の半角数値では保存できないこと' do
         @order_address.telephone_number = '090123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number input only half-width numbers")
+        expect(@order_address.errors.full_messages).to include('Telephone number input only half-width numbers')
       end
 
-      it "tokenが空では保存できないこと" do
+      it 'tokenが空では保存できないこと' do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Token can't be blank")
